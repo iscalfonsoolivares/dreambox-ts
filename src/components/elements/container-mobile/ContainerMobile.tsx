@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { RouteProps } from 'react-router-dom';
@@ -12,7 +12,7 @@ import {
 
 import { Media } from '../../../helpers/breakpoints';
 
-const ContainerMobile = ( props: RouteProps ): JSX.Element => {
+const ContainerMobile: FC<RouteProps> = ( props ): JSX.Element => {
 
   let location = useLocation();
 

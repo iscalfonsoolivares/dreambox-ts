@@ -1,5 +1,11 @@
+import { FC } from "react";
+import { RouteComponentProps } from 'react-router-dom';
 
-const NotFoundPage = (): JSX.Element => {
+interface NotFoundPageParams { };
+
+interface NotFoundPageProps extends RouteComponentProps< NotFoundPageParams > { };
+
+const NotFoundPage: FC< NotFoundPageProps > = (): JSX.Element => {
   return (
     <div className="not-found" >
 

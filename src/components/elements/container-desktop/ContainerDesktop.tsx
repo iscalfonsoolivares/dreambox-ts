@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import { RouteProps } from 'react-router-dom';
@@ -12,7 +12,7 @@ import {
 
 import { Media } from '../../../helpers/breakpoints';
 
-const ContainerDesktop = ( props: RouteProps ): JSX.Element => {
+const ContainerDesktop: FC<RouteProps> = ( props ): JSX.Element => {
 
   let location = useLocation();
 

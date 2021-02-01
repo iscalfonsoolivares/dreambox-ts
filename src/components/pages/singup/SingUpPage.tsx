@@ -1,16 +1,17 @@
-// import React, { useState, useEffect } from 'react';
+import { FC } from "react";
+import { RouteComponentProps } from 'react-router-dom';
 import { useEffect } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+
 import { Button, Form, Grid, Segment } from 'semantic-ui-react'
-
-//import { login } from '../../../store/auth/authAction';
 import { isAuthenticated, message, loginLoading } from '../../../store/auth/authSelector';
-import { RouterProps } from 'react-router-dom';
-//import MyDetailsForm from '../../elements/my-details-form/my-details-form';
 
-const SingUpPage = ( props: RouterProps ): JSX.Element => {
+interface SingUpPageParams { };
+
+interface SingUpPageProps extends RouteComponentProps< SingUpPageParams > { };
+
+const SingUpPage: FC< SingUpPageProps > = ( props ): JSX.Element => {
 
   const { history } = props;
 

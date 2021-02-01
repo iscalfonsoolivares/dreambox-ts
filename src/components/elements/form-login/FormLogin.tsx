@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { FC } from 'react';
 import { Button, Form, Segment } from 'semantic-ui-react';
 import { Formik, FormikProps } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,8 +8,7 @@ import { login } from '../../../store/auth/authAction';
 import { loginLoading } from '../../../store/auth/authSelector';
 import { Login } from '../../../store/auth/authInterfaces';
 
-
-const CustomForm = (props:  FormikProps<Login>): JSX.Element => {
+const CustomForm: FC< FormikProps <Login > > = (props): JSX.Element => {
 
   const loginLoadingSelector = useSelector(loginLoading);
 

@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, FC } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Grid } from 'semantic-ui-react'
-import { RouterProps } from 'react-router-dom';
-import { isAuthenticated, message, loginLoading } from '../../../store/auth/authSelector';
 
+import { isAuthenticated, message, loginLoading } from '../../../store/auth/authSelector';
 import FormLogin from '../../elements/form-login/FormLogin';
 
-const LoginPage = ( props: RouterProps ): JSX.Element => {
+interface LoginPageMatchParams { };
+
+interface LoginPageProps extends RouteComponentProps< LoginPageMatchParams > { };
+
+const LoginPage: FC< LoginPageProps > = ( props ): JSX.Element => {
 
   const { history } = props;
 

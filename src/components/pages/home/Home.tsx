@@ -1,10 +1,16 @@
+import { FC } from "react";
+import { RouteComponentProps } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
 
 import { Media } from '../../../helpers/breakpoints';
 import Hero from '../../elements/hero/Hero';
 
-const HomePage = (): JSX.Element => {
+interface HomePageMatchParams { };
+
+interface HomePageProps extends RouteComponentProps< HomePageMatchParams > { };
+
+const HomePage: FC< HomePageProps > = (): JSX.Element => {
 
   return (
     <Grid container >

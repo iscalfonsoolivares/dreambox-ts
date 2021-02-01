@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from "react";
 import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
 import { RouteProps } from 'react-router-dom';
@@ -9,8 +9,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import ContainerResponsive from './components/elements/container-responsive/ContainerResponsive';
 
+interface AppProps extends RouteProps { };
 
-const App = ( props: RouteProps ): JSX.Element => {
+const App: FC<AppProps> = ( props ): JSX.Element => {
 
   return (
     <div className="app">

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { FC } from 'react'
 import {
   Button,
   Container,
@@ -11,7 +11,7 @@ interface HeroProps {
   small?: boolean
 }
 
-const Hero = ( props: HeroProps ): JSX.Element => (
+const Hero: FC< HeroProps > = ( props ): JSX.Element => (
   <Container textAlign='center' >
     <Header
       as='h1'
