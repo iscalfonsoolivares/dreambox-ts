@@ -10,4 +10,3 @@ const { MediaContextProvider, Media } = createMedia({
 })
 
 export { MediaContextProvider, Media };
-

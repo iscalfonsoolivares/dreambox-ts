@@ -4,7 +4,7 @@ import { Button, Form, Segment } from 'semantic-ui-react';
 import { Formik, FormikProps } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { login } from '../../../store/auth/authAction';
+import { login } from '../../../store/auth/authThunks';
 import { loginLoading } from '../../../store/auth/authSelector';
 import { Login } from '../../../store/auth/authInterfaces';
 

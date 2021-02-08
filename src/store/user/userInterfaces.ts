@@ -1,5 +1,9 @@
 import { ActionType } from './userActionType';
 
+/*
+ Interfaces for data structuring
+ */
+
 export interface Geo {
   lat: string;
   lng: string;
@@ -30,6 +34,10 @@ export interface User {
   company?: Company;
 }
 
+/*
+ Interfaces for api responnses
+ */
+
 export interface ResponseGetUsers{
   users: User[];
 }
@@ -46,6 +54,12 @@ export interface ResponseUpdateUser{
   user: User;
 }
 
+/*
+ Interfaces for actions
+ */
+
+// Get User actions
+
 export interface GetUsersBeginsAction{
   type: ActionType.GET_USER_BEGINS;
 }
@@ -59,6 +73,8 @@ export interface GetUsersFailureAction{
   type: ActionType.GET_USER_FAILURE;
   payload: string;
 }
+
+// Add User actions
 
 export interface AddUserBeginsAction{
   type: ActionType.ADD_USER_BEGINS
@@ -74,6 +90,8 @@ export interface AddUserFailureAction{
   payload: string;
 }
 
+// Delete User actions
+
 export interface DeleteUserBeginsAction{
   type: ActionType.DELETE_USER_BEGINS
 }
@@ -87,6 +105,8 @@ export interface DeleteUserFailureAction{
   type: ActionType.DELETE_USER_FAILURE;
   payload: string;
 }
+
+// Update User actions
 
 export interface UpdateUserBeginsAction{
   type: ActionType.UPDATE_USER_BEGINS
@@ -102,6 +122,9 @@ export interface UpdateUserFailureAction{
   payload: string;
 }
 
+/*
+ Interface for state
+ */
 
 export interface UserState {
   userList: User[];

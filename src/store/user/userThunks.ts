@@ -2,7 +2,20 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 
 import apiConfig from '../../config/api';
-import { ActionType } from './userActionType';
+import {
+  createGetUsersBeginsAction,
+  createGetUsersSuccessAction,
+  createGetUsersFailureAction,
+  createAddUserBeginsAction,
+  createAddUserSuccessAction,
+  createAddUserFailureAction,
+  createDeleteUserBeginsAction,
+  createDeleteUserSuccessAction,
+  createDeleteUserFailureAction,
+  createUpdateUserBeginsAction,
+  createUpdateUserSuccessAction,
+  createUpdateUserFailureAction  
+} from './userActionCreators';
 import { 
 
   User, 
@@ -30,13 +43,13 @@ import {
 export const getUser = () => async ( dispatch: Dispatch ) => {
   try {
 
-    dispatch< GetUsersBeginsAction >( { type: ActionType.GET_USER_BEGINS } );
+    dispatch< GetUsersBeginsAction >( createGetUsersBeginsAction() );
     const result = await axios.get< ResponseGetUsers >( `${apiConfig.API_BASE_URL}/users.json` );
-    dispatch< GetUsersSuccessAction >( { type: ActionType.GET_USER_SUCCESS, payload: result.data.users } );
+    dispatch< GetUsersSuccessAction >( createGetUsersSuccessAction( result.data.users ) );
 
   } catch ( error ) {
 
-    dispatch< GetUsersFailureAction >( { type: ActionType.GET_USER_FAILURE, payload: error.message } );
+    dispatch< GetUsersFailureAction >( createGetUsersFailureAction( error.message ) );
 
   }
 }
@@ -44,13 +57,13 @@ export const getUser = () => async ( dispatch: Dispatch ) => {
 export const addUser = ( userData: User ) => async ( dispatch: Dispatch ) => {
   try {
 
-    dispatch< AddUserBeginsAction >( { type: ActionType.ADD_USER_BEGINS } );
+    dispatch< AddUserBeginsAction >( createAddUserBeginsAction() );
     const result = await axios.post< ResponsePostUser >( `${apiConfig.API_BASE_URL}/users`, userData );
-    dispatch< AddUserSuccessAction >( { type: ActionType.ADD_USER_SUCCESS, payload: result.data.user } );
+    dispatch< AddUserSuccessAction >( createAddUserSuccessAction( result.data.user ) );
 
   } catch (error) {
 
-    dispatch< AddUserFailureAction >( { type: ActionType.ADD_USER_FAILURE, payload: error.message } );
+    dispatch< AddUserFailureAction >( createAddUserFailureAction( error.message ) );
 
   }
 }
@@ -58,13 +71,13 @@ export const addUser = ( userData: User ) => async ( dispatch: Dispatch ) => {
 export const deleteUser = ( id: number ) => async ( dispatch: Dispatch ) => {
   try {
 
-    dispatch< DeleteUserBeginsAction >( { type: ActionType.DELETE_USER_BEGINS } );
+    dispatch< DeleteUserBeginsAction >( createDeleteUserBeginsAction() );
     await axios.delete< ResponseDeleteUser >( `${apiConfig.API_BASE_URL}/users/${id}` );
-    dispatch< DeleteUserSuccessAction >( { type: ActionType.DELETE_USER_SUCCESS, payload: id } );
+    dispatch< DeleteUserSuccessAction >( createDeleteUserSuccessAction( id ) );
 
   } catch ( error ) {
 
-    dispatch< DeleteUserFailureAction >( { type: ActionType.DELETE_USER_FAILURE, payload: error.message } );
+    dispatch< DeleteUserFailureAction >( createDeleteUserFailureAction( error.message ) );
 
   }
 }
@@ -72,13 +85,13 @@ export const deleteUser = ( id: number ) => async ( dispatch: Dispatch ) => {
 export const updateUser = ( userData: User ) => async ( dispatch: Dispatch ) => {
   try {
 
-    dispatch< UpdateUserBeginsAction >( { type: ActionType.UPDATE_USER_BEGINS } );
+    dispatch< UpdateUserBeginsAction >( createUpdateUserBeginsAction() );
     const result = await axios.put< ResponseUpdateUser >( `${apiConfig.API_BASE_URL}/users/${userData.id}`, userData );
-    dispatch< UpdateUserSuccessAction >( { type: ActionType.UPDATE_USER_SUCCESS, payload: result.data.user } );
+    dispatch< UpdateUserSuccessAction >( createUpdateUserSuccessAction( result.data.user ) );
 
   } catch (error) {
 
-    dispatch< UpdateUserFailureAction >( { type: ActionType.UPDATE_USER_FAILURE, payload: error.message } );
+    dispatch< UpdateUserFailureAction >( createUpdateUserFailureAction( error.message ) );
 
   }
 }

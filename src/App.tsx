@@ -1,46 +1,47 @@
 import React, { FC } from "react";
-import PropTypes from 'prop-types';
-import { ToastContainer } from 'react-toastify';
-import { RouteProps } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import 'react-toastify/dist/ReactToastify.css';
+import './App.css';
+import store from './store';
+import Layout from './components/elements/layout/Layout';
+import authGuard from './components/hoc/authGuard';
+import NotFoundPage from './components/pages/not-found/NotFound';
+import HomePage from './components/pages/home/Home';
+import ServicesPage from './components/pages/services/ServicesPage';
+import CompanyPage from './components/pages/company/CompanyPage';
+import LoginPage from './components/pages/login/Login';
+import SingUpPage from './components/pages/singup/SingUpPage';
+import DashboardPage from './components/pages/dashboard/Dashboard';
+import TestPage from './components/pages/test/TestPage';
+import UserPage from './components/pages/user/UserPage';
 
-// import './App.css';
+interface AppProps { };
 
-import ContainerResponsive from './components/elements/container-responsive/ContainerResponsive';
-
-interface AppProps extends RouteProps { };
-
-const App: FC<AppProps> = ( props ): JSX.Element => {
+const App: FC<AppProps> = (): JSX.Element => {
 
   return (
-    <div className="app">
-
-      <ContainerResponsive>
-
-        { props.children }
-
-      </ContainerResponsive>            
-
-      <ToastContainer
-        position="bottom-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-
-    </div>
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Layout>
+          <Switch>
+              <Route exact path="/" component={HomePage}  />
+              <Route exact path="/services" component={ServicesPage} />
+              <Route exact path="/company" component={CompanyPage} />
+              <Route exact path="/login" component={LoginPage} />
+              <Route exact path="/singup" component={SingUpPage} />
+              <Route exact path="/dashboard" component={ authGuard(DashboardPage) } />
+              <Route exact path="/user/:id" component={ authGuard(UserPage) } />
+              <Route exact path="/test" component={TestPage} />
+              <Route component={NotFoundPage} />
+          </Switch>
+        </Layout>
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
   );
   
-}
-
-App.propTypes = {
-  children: PropTypes.node,
 }
 
 export default App;

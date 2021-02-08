@@ -6,9 +6,9 @@ import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce,
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
-import { logout } from '../../../store/auth/authAction';
+import { logout } from '../../../store/auth/authThunks';
 import { getUserLoading, userList, message } from '../../../store/user/userSelector';
-import { getUser } from '../../../store/user/userAction';
+import { getUser } from '../../../store/user/userThunks';
 import { User } from '../../../store/user/userInterfaces';
 
 interface DashboardPageMatchParams { };

@@ -9,6 +9,8 @@ const logger = createLogger({
   collapsed: true
 });
 
-const store = createStore(reducer, undefined, composeWithDevTools(applyMiddleware(thunk, logger)));
+const store = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 
+              createStore(reducer, undefined, composeWithDevTools(applyMiddleware(thunk, logger))) : 
+              createStore(reducer, undefined, applyMiddleware(thunk));
 
 export default store;
