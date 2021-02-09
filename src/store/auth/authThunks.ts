@@ -17,8 +17,9 @@ import {
   LogoutSuccessAction
 } from './authInterfaces';
 
+/* note: https://daveceddia.com/what-is-a-thunk/ */
 
-export const login = ( loginData: Login ) => async (dispatch: Dispatch) => {
+export const loginThunk = ( loginData: Login ): Function => async (dispatch: Dispatch ): Promise< void > => {
   try {
 
     dispatch< LoginBeginsAction >( createLoginBeginsAction() );
@@ -32,7 +33,7 @@ export const login = ( loginData: Login ) => async (dispatch: Dispatch) => {
   }
 }
 
-export const logout = () => ( dispatch: Dispatch ) => {
+export const logoutThunk = (): Function => ( dispatch: Dispatch ): void => {
 
   localStorage.removeItem('JWT_TOKEN');
   axios.defaults.headers.common['Authorization'] = '';

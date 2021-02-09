@@ -41,6 +41,11 @@ const authReducer = (state: AuthState = initialAuthState, action: Actions ): Aut
         message: action.payload,
         loginLoading: false
       }
+    case ActionType.LOGIN_CLEAR_MESSAGE:
+      return {
+        ...state,
+        message: ''
+      }
     case ActionType.LOGOUT_SUCCESS:
       return {
         ...state,

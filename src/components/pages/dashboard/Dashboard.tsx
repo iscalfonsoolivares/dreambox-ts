@@ -6,10 +6,11 @@ import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce,
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
-import { logout } from '../../../store/auth/authThunks';
+import { logoutThunk } from '../../../store/auth/authThunks';
 import { getUserLoading, userList, message } from '../../../store/user/userSelector';
-import { getUser } from '../../../store/user/userThunks';
-import { User } from '../../../store/user/userInterfaces';
+import { getUserThunk } from '../../../store/user/userThunks';
+import { User, UserClearMessageAction } from '../../../store/user/userInterfaces';
+import { createUserClearMessageAction } from '../../../store/user/userActionCreators';
 
 interface DashboardPageMatchParams { };
 
@@ -20,7 +21,7 @@ const DashboardPage: FC< DashboardPageProps > = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const handleSubmit =  () => {
-    dispatch(logout());
+    dispatch(logoutThunk());
   }
 
   const pageSizeSelector = 5;
@@ -62,12 +63,12 @@ const DashboardPage: FC< DashboardPageProps > = (): JSX.Element => {
   )
 
   useEffect(() => {
-    if ( userListSelector.length === 0 ) dispatch(getUser());
+    if ( userListSelector.length === 0 ) dispatch< Function >( getUserThunk() );
   }, [dispatch, userListSelector]);
 
-  useEffect(() => {
-    if (messageSelector) toast.error(messageSelector);
-  },[messageSelector]);
+  useEffect(() => { 
+    if (messageSelector) toast.error(messageSelector, { onClose: () => dispatch< UserClearMessageAction >( createUserClearMessageAction() ) });
+  },[messageSelector, dispatch]);
 
   useEffect(() => {
     debouncedFilter(filter)

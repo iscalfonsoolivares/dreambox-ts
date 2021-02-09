@@ -40,7 +40,9 @@ import {
   
 } from './userInterfaces';
 
-export const getUser = () => async ( dispatch: Dispatch ) => {
+/* note: https://daveceddia.com/what-is-a-thunk/ */
+
+export const getUserThunk = (): Function => async ( dispatch: Dispatch ): Promise< void > => {
   try {
 
     dispatch< GetUsersBeginsAction >( createGetUsersBeginsAction() );
@@ -54,7 +56,7 @@ export const getUser = () => async ( dispatch: Dispatch ) => {
   }
 }
 
-export const addUser = ( userData: User ) => async ( dispatch: Dispatch ) => {
+export const addUserThunk = ( userData: User ): Function => async ( dispatch: Dispatch ): Promise< void > => {
   try {
 
     dispatch< AddUserBeginsAction >( createAddUserBeginsAction() );
@@ -68,7 +70,7 @@ export const addUser = ( userData: User ) => async ( dispatch: Dispatch ) => {
   }
 }
 
-export const deleteUser = ( id: number ) => async ( dispatch: Dispatch ) => {
+export const deleteUserThunk = ( id: number ): Function => async ( dispatch: Dispatch ): Promise< void > => {
   try {
 
     dispatch< DeleteUserBeginsAction >( createDeleteUserBeginsAction() );
@@ -82,7 +84,7 @@ export const deleteUser = ( id: number ) => async ( dispatch: Dispatch ) => {
   }
 }
 
-export const updateUser = ( userData: User ) => async ( dispatch: Dispatch ) => {
+export const updateUserThunk = ( userData: User ): Function => async ( dispatch: Dispatch ): Promise< void > => {
   try {
 
     dispatch< UpdateUserBeginsAction >( createUpdateUserBeginsAction() );

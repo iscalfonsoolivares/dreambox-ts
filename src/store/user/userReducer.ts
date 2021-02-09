@@ -89,6 +89,11 @@ const userReducer = (state: UserState = initialUserState, action: Actions ): Use
         message: action.payload,
         updateUserLoading: false
       }
+    case ActionType.USER_CLEAR_MESSAGE:
+      return {
+        ...state,
+        message: ''
+      }
     default:
       return state
   }

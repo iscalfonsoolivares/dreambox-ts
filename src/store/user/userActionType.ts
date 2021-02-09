@@ -12,7 +12,8 @@ import {
   DeleteUserFailureAction,
   UpdateUserBeginsAction,
   UpdateUserSuccessAction,
-  UpdateUserFailureAction
+  UpdateUserFailureAction,
+  UserClearMessageAction
   
 } from './userInterfaces';
 
@@ -32,7 +33,9 @@ export enum ActionType {
   
   UPDATE_USER_BEGINS = 'UPDATE_USER_BEGINS',
   UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS',
-  UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE'
+  UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE',
+
+  USER_CLEAR_MESSAGE = 'USER_CLEAR_MESSAGE'
   
 }
 
@@ -47,4 +50,5 @@ export type Actions = GetUsersBeginsAction    |
                       DeleteUserFailureAction |
                       UpdateUserBeginsAction  |
                       UpdateUserSuccessAction |
-                      UpdateUserFailureAction
+                      UpdateUserFailureAction |
+                      UserClearMessageAction

@@ -4,11 +4,11 @@ import { Button, Form, Segment } from 'semantic-ui-react';
 import { Formik, FormikProps } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { login } from '../../../store/auth/authThunks';
+import { loginThunk } from '../../../store/auth/authThunks';
 import { loginLoading } from '../../../store/auth/authSelector';
 import { Login } from '../../../store/auth/authInterfaces';
 
-const CustomForm: FC< FormikProps <Login > > = (props): JSX.Element => {
+const CustomForm: FC< FormikProps< Login >> = (props): JSX.Element => {
 
   const loginLoadingSelector = useSelector(loginLoading);
 
@@ -54,8 +54,8 @@ const FormLogin = () => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={async ({username, password}, actions) => {
-        await dispatch(login({ username, password }));
+      onSubmit={ async ( {username, password }, actions ) => {
+        await dispatch< Function >( loginThunk( { username, password } ));
       }}
     >
       { props => <CustomForm {...props} />}

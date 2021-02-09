@@ -122,6 +122,10 @@ export interface UpdateUserFailureAction{
   payload: string;
 }
 
+export interface UserClearMessageAction{
+  type: ActionType.USER_CLEAR_MESSAGE
+}
+
 /*
  Interface for state
  */

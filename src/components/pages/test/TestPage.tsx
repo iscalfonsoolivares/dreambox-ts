@@ -5,7 +5,7 @@ import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce,
 import { toast } from 'react-toastify';
 
 import { getUserLoading, userList, message } from '../../../store/user/userSelector';
-import { getUser } from '../../../store/user/userThunks';
+import { getUserThunk } from '../../../store/user/userThunks';
 import { User } from '../../../store/user/userInterfaces';
 
 const TestPage = (): JSX.Element => {
@@ -50,7 +50,7 @@ const TestPage = (): JSX.Element => {
   )
 
   useEffect(() => {
-    if ( userListSelector.length === 0 ) dispatch(getUser());
+    if ( userListSelector.length === 0 ) dispatch< Function >( getUserThunk() );
   }, [dispatch, userListSelector]);
 
   useEffect(() => {

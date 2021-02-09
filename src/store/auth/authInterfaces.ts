@@ -37,7 +37,11 @@ export interface LoginFailureAction{
   payload: string;
 }
 
-// Get Login actions
+export interface LoginClearMessageAction{
+  type: ActionType.LOGIN_CLEAR_MESSAGE
+}
+
+// Get Logout actions
 
 export interface LogoutSuccessAction{
   type: ActionType.LOGOUT_SUCCESS;

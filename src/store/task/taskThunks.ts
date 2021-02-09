@@ -38,7 +38,9 @@ import {
   UpdateTaskFailureAction
 } from './taskInterfaces';
 
-export const getTask = () => async (dispatch: Dispatch) => {
+/* note: https://daveceddia.com/what-is-a-thunk/ */
+
+export const getTaskThunk = (): Function => async (dispatch: Dispatch): Promise< void > => {
   try {
 
     dispatch< GetTasksBeginsAction >( createGetTasksBeginsAction() );
@@ -52,8 +54,7 @@ export const getTask = () => async (dispatch: Dispatch) => {
   }
 }
 
-
-export const addTask = ( taskData: Task ) => async ( dispatch: Dispatch ) => {
+export const addTaskThunk = ( taskData: Task ): Function => async ( dispatch: Dispatch ): Promise< void > => {
   try {
 
     dispatch< AddTasksBeginsAction >( createAddTasksBeginsAction() );
@@ -68,7 +69,7 @@ export const addTask = ( taskData: Task ) => async ( dispatch: Dispatch ) => {
 }
 
 
-export const deleteTask = ( id: number ) => async ( dispatch: Dispatch ) => {
+export const deleteTaskThunk = ( id: number ): Function => async ( dispatch: Dispatch ): Promise< void > => {
   try {
 
     dispatch< DeleteTasksBeginsAction >( createDeleteTasksBeginsAction() );
@@ -82,8 +83,7 @@ export const deleteTask = ( id: number ) => async ( dispatch: Dispatch ) => {
   }
 }
 
-
-export const updateTask = ( taskData: Task ) => async ( dispatch: Dispatch ) => {
+export const updateTaskThunk = ( taskData: Task ): Function => async ( dispatch: Dispatch ): Promise< void > => {
   try {
 
     dispatch< UpdateTasksBeginsAction >( createUpdateTasksBeginsAction() );

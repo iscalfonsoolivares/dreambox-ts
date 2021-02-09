@@ -15,8 +15,8 @@ import {
   DeleteUserFailureAction,
   UpdateUserBeginsAction,
   UpdateUserSuccessAction,
-  UpdateUserFailureAction
-  
+  UpdateUserFailureAction,
+  UserClearMessageAction
 } from './userInterfaces';
 
 export const createGetUsersBeginsAction = (): GetUsersBeginsAction => ({ type: ActionType.GET_USER_BEGINS });
@@ -34,3 +34,5 @@ export const createDeleteUserFailureAction = ( message: string ): DeleteUserFail
 export const createUpdateUserBeginsAction = (): UpdateUserBeginsAction => ({ type: ActionType.UPDATE_USER_BEGINS });
 export const createUpdateUserSuccessAction = ( user: User ): UpdateUserSuccessAction => ({ type: ActionType.UPDATE_USER_SUCCESS, payload: user });
 export const createUpdateUserFailureAction = ( message: string ): UpdateUserFailureAction => ({ type: ActionType.UPDATE_USER_FAILURE, payload: message })
+
+export const createUserClearMessageAction = (): UserClearMessageAction => ({ type: ActionType.USER_CLEAR_MESSAGE });
