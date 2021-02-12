@@ -1,5 +1,6 @@
-import { FC, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { RouteComponentProps } from 'react-router-dom';
+import { Grid } from "semantic-ui-react";
 
 interface UserPageParams {
   id: string;
@@ -12,13 +13,14 @@ const UserPage: FC< UserPageProps > = ( { history, match: { params: { id }} } ):
   useEffect(() => console.log(id), [id]);
 
   return (
-    <div className="not-found" >
-
-      this is user page {id}
-
-      <button onClick={ () => history.goBack()  } >regresar</button>
-
-    </div>
+    <Grid container >
+      <Grid.Row>
+        <Grid.Column width='sixteen'>
+          this is user page {id}
+          <button onClick={ () => history.goBack()  } >regresar</button>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   );
 }
 

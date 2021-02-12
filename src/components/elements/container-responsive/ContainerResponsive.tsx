@@ -1,17 +1,20 @@
 import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import { RouteProps } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import ContainerDesktop from '../container-desktop/ContainerDesktop';
 import ContainerMobile from '../container-mobile/ContainerMobile';
-import { MediaContextProvider } from '../../../helpers/breakpoints';
+import { breakpoints } from '../../../helpers/breakpoints';
 
 const ContainerResponsive: FC<RouteProps> = ( props ): JSX.Element => {
+  const isTabletOrMobile = useMediaQuery({ query: breakpoints.tablet });
   return (
-    <MediaContextProvider>
-      <ContainerDesktop>{props.children}</ContainerDesktop>
-      <ContainerMobile>{props.children}</ContainerMobile>
-    </MediaContextProvider>
+    <>
+      {
+        isTabletOrMobile ? <ContainerMobile>{props.children}</ContainerMobile> : <ContainerDesktop>{props.children}</ContainerDesktop>
+      }
+    </>
   )
 };
 

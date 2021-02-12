@@ -1,12 +1,5 @@
-import { createMedia } from '@artsy/fresnel'
-
-const { MediaContextProvider, Media } = createMedia({
-  breakpoints: {
-    mobile: 0,
-    tablet: 768,
-    smallMonitor: 992,
-    largeMonitor: 1200
-  },
-})
-
-export { MediaContextProvider, Media };
+export const breakpoints = {
+  tablet: '(max-width: 723px)',
+  smallMonitor: '(max-width: 933px)',
+  largeMonitor: '(max-width: 1127px)'
+}

@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React, { FC } from 'react'
 import {
   Button,
-  Container,
   Header,
   Icon
 } from 'semantic-ui-react'
@@ -12,7 +11,7 @@ interface HeroProps {
 }
 
 const Hero: FC< HeroProps > = ( props ): JSX.Element => (
-  <Container textAlign='center' >
+  <>
     <Header
       as='h1'
       content='Imagine-a-Company'
@@ -43,7 +42,7 @@ const Hero: FC< HeroProps > = ( props ): JSX.Element => (
       Get Started
       <Icon name='angle right' />
     </Button>
-  </Container>
+  </>
 )
 
 Hero.propTypes = {

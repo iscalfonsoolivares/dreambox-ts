@@ -1,5 +1,6 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { RouteComponentProps } from 'react-router-dom';
+import { Grid } from "semantic-ui-react";
 
 interface ServicesPageParams { };
 
@@ -8,9 +9,13 @@ interface ServicesPageProps extends RouteComponentProps< ServicesPageParams > { 
 const ServicesPage: FC< ServicesPageProps > = (): JSX.Element => {
 
   return (
-    <div className="services" >
-      Services Page
-    </div>
+    <Grid container >
+      <Grid.Row>
+        <Grid.Column width='sixteen'>
+          Services Page
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   );
 
 }
