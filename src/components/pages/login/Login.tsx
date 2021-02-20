@@ -25,6 +25,7 @@ const LoginPage: FC< LoginPageProps > = ( props ): JSX.Element => {
   // const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
+    
     if (isAuthenticatedSelector) history.push('/dashboard');
     if (messageSelector) toast.error(messageSelector, { onClose: () => dispatch< LoginClearMessageAction >( createLoginClearMessageAction() ) } );
     // setShowLoading(loginLoadingSelector) 

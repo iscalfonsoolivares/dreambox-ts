@@ -15,6 +15,7 @@ import SingUpPage from './components/pages/singup/SingUpPage';
 import DashboardPage from './components/pages/dashboard/Dashboard';
 import TestPage from './components/pages/test/TestPage';
 import UserPage from './components/pages/user/UserPage';
+import { PrivateRoute } from './components/elements/private-route/PrivateRoute';
 
 interface AppProps { };
 
@@ -31,8 +32,8 @@ const App: FC<AppProps> = (): JSX.Element => {
               <Route exact path="/company" component={CompanyPage} />
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/singup" component={SingUpPage} />
-              <Route exact path="/dashboard" component={ authGuard(DashboardPage) } />
-              <Route exact path="/user/:id" component={ authGuard(UserPage) } />
+              <PrivateRoute exact path="/dashboard" component={ DashboardPage } />
+              <PrivateRoute exact path="/user/:id" component={ UserPage }  />
               <Route exact path="/test" component={TestPage} />
               <Route component={NotFoundPage} />
           </Switch>
